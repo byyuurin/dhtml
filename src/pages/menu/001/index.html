@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div flex h-full w-full>
+      <div class="navigation is-expand">
+        <div m="b-5 x-2">
+          <div
+            p-2
+            bg="white/10 hover:white/20"
+            text-2xl
+            inline-flex
+            items-center
+            rounded-lg
+            transition
+            duration-250
+            cursor-pointer
+            class="navigation-toggle"
+          >
+            <i i-tabler-menu-2></i>
+          </div>
+        </div>
+        <div class="menu">
+          <div class="menu-item">
+            <a class="menu-item__inner" href="#">
+              <i i-tabler-smart-home></i>
+              <span>Home</span>
+            </a>
+          </div>
+          <div class="menu-item">
+            <a class="menu-item__inner" href="#">
+              <i i-tabler-user></i>
+              <span>Profile</span>
+            </a>
+          </div>
+          <div class="menu-item">
+            <a class="menu-item__inner" href="#">
+              <i i-tabler-brand-hipchat></i>
+              <span>Messages</span>
+            </a>
+          </div>
+          <div class="menu-item">
+            <a class="menu-item__inner" href="#">
+              <i i-tabler-settings></i>
+              <span>Settings</span>
+            </a>
+          </div>
+          <div class="menu-item is-active">
+            <a class="menu-item__inner" href="#">
+              <i i-tabler-help></i>
+              <span>Help</span>
+            </a>
+          </div>
+          <div class="menu-item">
+            <a class="menu-item__inner" href="#">
+              <i i-tabler-lock></i>
+              <span>Password</span>
+            </a>
+          </div>
+          <div class="menu-item">
+            <a class="menu-item__inner" href="#">
+              <i i-tabler-logout></i>
+              <span>Sign Out</span>
+            </a>
+          </div>
+          <div class="menu__end"></div>
+        </div>
+      </div>
+      <div p-4>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia odio aspernatur reprehenderit doloribus repellat
+        est cupiditate voluptates nostrum distinctio corporis. Repellat ut odit quia ipsam, explicabo in labore
+        perferendis quos!
+      </div>
+    </div>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
