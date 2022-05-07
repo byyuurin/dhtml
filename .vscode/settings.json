@@ -1,0 +1,14 @@
+{
+  "prettier.enable": true,
+  "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+  },
+  "css.lint.unknownAtRules": "ignore",
+  "css.customData": [".vscode/unocss.css-data.json"],
+  "[html]": {
+    "editor.formatOnSave": true
+  },
+  "files.associations": {
+    "*.css": "postcss"
+  }
+}
