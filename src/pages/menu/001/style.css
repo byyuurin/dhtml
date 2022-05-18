@@ -1,13 +1,58 @@
 @import "../../../styles/reset.css";
 
+:root {
+  --color-theme: #64499a;
+  --color-assist: white;
+  --color-scrollbar-base: #64499a80;
+  --color-scrollbar-active: #64499add;
+  --radius-base: 1.25em;
+}
+
+::-webkit-scrollbar {
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-scrollbar-base);
+  border-radius: var(--radius-base);
+  border: 0.33rem solid var(--color-assist);
+
+  &:hover {
+    border-width: 0.125rem;
+  }
+
+  &:active {
+    background-color: var(--color-scrollbar-active);
+    border-width: 0.25rem;
+  }
+}
+
+*:not(:hover)::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+/* Wrapper
+---------------------------------------- */
+.wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
 /* Navigation
 ---------------------------------------- */
 
 .navigation {
   --width-full: 300px;
   --width-mini: 5em;
-  --color-theme: #4d5bf9;
-  --color-assist: white;
 
   position: relative;
   flex-shrink: 0;
@@ -66,7 +111,7 @@
 ---------------------------------------- */
 
 .menu {
-  --menu-radius: 1.25em;
+  --menu-radius: var(--radius-base);
   --menu-color-theme: var(--color-theme);
   --menu-color-assist: var(--color-assist);
 
@@ -182,5 +227,23 @@
     & + .menu__end {
       background: var(--menu-color-assist);
     }
+  }
+}
+
+/* Content
+---------------------------------------- */
+
+.content {
+  height: 100%;
+  background: var(--color-assist);
+  border-radius: var(--radius-base);
+  overflow: auto;
+
+  &__wrapper {
+    padding: 1.25em 1em;
+    padding-left: 0;
+    flex-grow: 1;
+    width: 0;
+    background: var(--color-theme);
   }
 }
