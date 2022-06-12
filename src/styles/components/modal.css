@@ -1,0 +1,35 @@
+@keyframes modal-enter {
+  0% {
+    opacity: 0
+  }
+}
+
+@keyframes modal-leave {
+  100% {
+    opacity: 0
+  }
+}
+
+:root {
+  --modal-background-color: rgba(0, 0, 0, 0.5);
+  --modal-opacity: 1;
+  --modal-duration: 200ms;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--modal-background-color);
+  opacity: var(--modal-opacity);
+
+  &-enter {
+    animation: modal-enter var(--modal-duration) ease-in-out;
+  }
+
+  &-leave {
+    animation: modal-leave var(--modal-duration) ease-in-out forwards;
+  }
+}

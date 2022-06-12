@@ -1,0 +1,152 @@
+@import "../../../styles/main.css";
+
+@keyframes dialog-enter {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -75%);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, -45%);
+  }
+}
+
+@keyframes dialog-leave {
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -45%);
+  }
+  80% {
+    opacity: 0;
+    transform: translate(-50%, -55%);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes dialog-shake {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  6.5% {
+    transform: translate(-52%, -50%) rotateY(-9deg);
+  }
+  18.5% {
+    transform: translate(-48%, -50%) rotateY(7deg);
+  }
+  31.5% {
+    transform: translate(-51%, -50%) rotateY(-5deg);
+  }
+  43.5% {
+    transform: translate(-49%, -50%) rotateY(3deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+:root {
+  --dialog-gap-size: 20px;
+  --dialog-background-color: #fff;
+}
+
+.dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: calc(100% - 10vmin);
+  max-height: calc(100% - 10vmin);
+  display: flex;
+  flex-direction: column;
+  background: var(--dialog-background-color);
+  border: var(--dialog-gap-size) solid var(--dialog-background-color);
+  border-radius: 4px;
+  box-shadow:1px 3px 6px 0 rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  cursor: initial;
+
+  &__wrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &.dialog-enter {
+      .dialog {
+        animation: dialog-enter var(--modal-duration) ease-in;
+      }
+    }
+
+    &.dialog-leave {
+      .dialog {
+        animation: dialog-leave var(--modal-duration) ease-out forwards;
+      }
+    }
+
+    &.dialog-shake {
+      .dialog {
+        animation: dialog-shake var(--modal-duration) ease-in-out;
+      }
+    }
+
+    &:hover {
+      .dialog__close-button {
+        transform: rotate(0deg) translate(0, 0);
+      }
+    }
+  }
+
+  &__close-button {
+    position: absolute;
+    z-index: 10;
+    top: -1px;
+    right: -1px;
+    font-size: 1.5em;
+    padding:  0 0 10px 10px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: rgba(107, 114, 128, 0.5);
+    background: var(--dialog-background-color);
+    border: 0px solid var(--dialog-background-color);
+    border-width: 1px 1px 0 0;
+    border-bottom-left-radius: 9999px;
+    transform: rotate(-90deg) translate(2em, -2em);
+    transition: all 300ms ease-in;
+    cursor: pointer;
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.75);
+    }
+
+    + .dialog__header {
+      padding-right: calc(10px + 1.5em);
+      word-wrap: break-word;
+    }
+  }
+
+  &__header {
+    position: relative;
+    z-index: 9;
+    font-size: 1.25em;
+    font-weight: bold;
+    line-height: 1.5em;
+
+    &:not(:empty) {
+      padding-bottom: var(--dialog-gap-size);
+    }
+  }
+
+  &__body {
+    overflow: auto;
+  }
+
+  &__footer {
+    &:not(:empty) {
+      padding-top: var(--dialog-gap-size);
+    }
+  }
+}
