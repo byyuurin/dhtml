@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dialog/001</title>
+  <script type="module" crossorigin src="/dhtml/assets/modal_001.2111e393.js"></script>
+  <link rel="modulepreload" href="/dhtml/assets/dom.2a1e19d1.js">
+  <link rel="stylesheet" href="/dhtml/assets/dom.3a7c8292.css">
+  <link rel="stylesheet" href="/dhtml/assets/modal_001.eb0f01f3.css">
+</head>
+
+<body>
+  <h1 p-2>Dialog demo</h1>
+  <div p-2 flex="~ gap-2" children="p-2">
+    <button data-dialog-enter="body-only">Body only</button>
+    <button data-dialog-enter="full-content">Full content</button>
+    <button data-dialog-enter="max-size">Max size</button>
+    <button data-dialog-enter="with-other-dialog">With other dialog</button>
+    <button data-dialog-enter="modal-closeable">Modal closeable</button>
+  </div>
+  <div p-2 h-150vh>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quo distinctio quam sit nihil tempora minima sapiente, fuga dicta, nostrum sequi voluptate ratione pariatur officia laudantium obcaecati provident reiciendis. Accusamus.
+  </div>
+  <div data-dialog="body-only" class="dialog__wrapper">
+    <div class="dialog" role="dialog" aria-modal="true">
+      <div class="dialog__close-button">
+        <i i-mdi-close-thick></i>
+      </div>
+      <div class="dialog__header"></div>
+      <div class="dialog__body">
+        <div text-2vw text-white text-center m-auto w-400px h-400px leading-400px bg-green-500>
+          Body only
+        </div>
+      </div>
+      <div class="dialog__footer"></div>
+    </div>
+  </div>
+  <div data-dialog="full-content" class="dialog__wrapper">
+    <div class="dialog" role="dialog" aria-modal="true">
+      <div class="dialog__close-button">
+        <i i-mdi-close-thick></i>
+      </div>
+      <div class="dialog__header">
+        <div class="dialog__header-text">
+          Dialog Header
+        </div>
+      </div>
+      <div class="dialog__body">
+        <div text-2vw text-white text-center m-auto w-400px h-400px leading-400px bg-green-500>
+          <p>Dialog Body</p>
+        </div>
+      </div>
+      <div class="dialog__footer">
+        Dialog Footer
+      </div>
+    </div>
+  </div>
+  <div data-dialog="max-size" class="dialog__wrapper">
+    <div class="dialog" role="dialog" aria-modal="true" w-full>
+      <div class="dialog__close-button">
+        <i i-mdi-close-thick></i>
+      </div>
+      <div class="dialog__header">
+        Max size
+      </div>
+      <div class="dialog__body">
+        <img src="https://picsum.photos/1920/1080" alt="">
+      </div>
+      <div class="dialog__footer"></div>
+    </div>
+  </div>
+  <div data-dialog="with-other-dialog" class="dialog__wrapper">
+    <div class="dialog" role="dialog" aria-modal="true">
+      <div class="dialog__close-button">
+        <i i-mdi-close-thick></i>
+      </div>
+      <div class="dialog__header">
+        400x600
+      </div>
+      <div class="dialog__body">
+        <img src="https://picsum.photos/400/600/" alt="">
+      </div>
+      <div class="dialog__footer">
+        <div text-center>
+          <button data-dialog-enter="with-other-dialog-2" p-2>Open Dialog</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-dialog="with-other-dialog-2" class="dialog__wrapper">
+    <div class="dialog" role="dialog" aria-modal="true">
+      <div class="dialog__close-button">
+        <i i-mdi-close-thick></i>
+      </div>
+      <div class="dialog__header">
+        600x400
+      </div>
+      <div class="dialog__body">
+        <img src="https://picsum.photos/600/400/" alt="">
+      </div>
+      <div class="dialog__footer">
+        <div text-center>
+          <button data-dialog-enter="with-other-dialog-3" p-2>Open Dialog</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-dialog="with-other-dialog-3" class="dialog__wrapper">
+    <div class="dialog" role="dialog" aria-modal="true">
+      <div class="dialog__close-button">
+        <i i-mdi-close-thick></i>
+      </div>
+      <div class="dialog__header">
+        200x200
+      </div>
+      <div class="dialog__body">
+        <img src="https://picsum.photos/200/200" alt="">
+      </div>
+      <div class="dialog__footer"></div>
+    </div>
+  </div>
+  <div data-dialog="modal-closeable" data-dialog-closeable="true" class="dialog__wrapper">
+    <div class="dialog" role="dialog" aria-modal="true">
+      <!-- <div class="dialog__close-button">
+        <i i-mdi-close-thick></i>
+      </div> -->
+      <div class="dialog__header"></div>
+      <div class="dialog__body">
+        <div p-2 text-2xl text-white text-center w-400px max-w-full h-400px bg-green-500 flex justify-center items-center>
+          Click modal to close modal
+        </div>
+      </div>
+      <div class="dialog__footer"></div>
+    </div>
+  </div>
+  
+</body>
+
+</html>
