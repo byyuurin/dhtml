@@ -1,16 +1,17 @@
 import 'uno.css'
 import './style.css'
+import { $ } from '../../../utils/dom'
 
-document.querySelector<HTMLDivElement>('.navigation-toggle')?.addEventListener('click', () => {
-  document.querySelector('.navigation')?.classList.toggle('is-expand')
+$<HTMLDivElement>('.navigation-toggle')?.addEventListener('click', () => {
+  $('.navigation')?.classList.toggle('is-expand')
 })
 
-Array.from(document.querySelectorAll<HTMLAnchorElement>('.menu-item')).forEach(el => {
-  el.onclick = function() {
-    document.querySelector('.menu-item.is-active')?.classList.toggle('is-active')
+Array.from($.all<HTMLAnchorElement>('.menu-item')).forEach(el => {
+  el.onclick = function () {
+    $('.menu-item.is-active')?.classList.toggle('is-active')
     el.classList.toggle('is-active')
   }
 })
 
 if (window.innerWidth >= 768)
-  document.querySelector<HTMLDivElement>('.navigation-toggle')?.dispatchEvent(new Event('click'))
+  $<HTMLDivElement>('.navigation-toggle')?.dispatchEvent(new Event('click'))
