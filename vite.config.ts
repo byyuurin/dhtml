@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import unocss from 'unocss/vite'
-import { resolveHtml } from './src/utils'
+import { resolveHtml } from './src/utils/vite'
 
 const { root, outDir, entries } = resolveHtml('src/pages')
 

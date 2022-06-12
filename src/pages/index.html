@@ -7,6 +7,12 @@
     <title>Dynamic HTML</title>
   </head>
   <body>
-    index
+    <script>
+      function onload(path = '') {
+        if (/\/$/.test(path)) return
+        location.replace(path + '/')
+      }
+      onload(location.href)
+    </script>
   </body>
 </html>
