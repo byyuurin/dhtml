@@ -62,7 +62,7 @@
   background: var(--dialog-background-color);
   border: var(--dialog-gap-size) solid var(--dialog-background-color);
   border-radius: 4px;
-  box-shadow:1px 3px 6px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 3px 6px 0 rgba(0, 0, 0, 0.5);
   overflow: hidden;
   transform: translate(-50%, -50%);
   cursor: initial;
@@ -105,7 +105,7 @@
     top: -1px;
     right: -1px;
     font-size: 1.5em;
-    padding:  0 0 10px 10px;
+    padding: 0 0 10px 10px;
     display: flex;
     align-items: center;
     font-weight: bold;

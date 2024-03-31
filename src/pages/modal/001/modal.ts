@@ -32,7 +32,7 @@ interface ModalInstance {
 function createModalOverlay(root: HTMLElement, className: string) {
   const overlay = document.createElement('div')
   overlay.className = className
-  root.appendChild(overlay)
+  root.append(overlay)
   return overlay
 }
 
@@ -78,12 +78,16 @@ export function createModalManager(overlayClass: string, options: ModalManagerOp
     p.finally(() => {
       promise = null
     })
+
     promise = p
   }
 
   const modalEnter = (key: string, modalOptions: UseModalOptions) => {
-    if (promise) return
-    if (history.includes(key)) return
+    if (promise)
+      return
+
+    if (history.includes(key))
+      return
 
     modalLock(new Promise((resolve) => {
       const { enterClass, duration } = options.animation
@@ -91,7 +95,8 @@ export function createModalManager(overlayClass: string, options: ModalManagerOp
       const modal = instances[key]!
       let overlay = getOverlay()
 
-      if (!overlay) overlay = createModalOverlay(root, overlayClass)
+      if (!overlay)
+        overlay = createModalOverlay(root, overlayClass)
 
       history.push(key)
       root.style.overflow = 'hidden'
@@ -100,13 +105,15 @@ export function createModalManager(overlayClass: string, options: ModalManagerOp
       modal.element.style.display = modal.style.display
       overlay.style.zIndex = `${+modal.element.style.zIndex - 1}`
 
-      if (history.length <= 1) overlay.classList.add(enterClass)
+      if (history.length <= 1)
+        overlay.classList.add(enterClass)
 
       if (onBeforeEnter)
         onBeforeEnter()
 
       setTimeout(() => {
-        if (history.length <= 1) overlay?.classList.remove(enterClass)
+        if (history.length <= 1)
+          overlay?.classList.remove(enterClass)
 
         if (onAfterEnter)
           onAfterEnter()
@@ -117,8 +124,11 @@ export function createModalManager(overlayClass: string, options: ModalManagerOp
   }
 
   const modalLeave = (key: string, modalOptions: UseModalOptions) => {
-    if (promise) return
-    if (!history.includes(key)) return
+    if (promise)
+      return
+
+    if (!history.includes(key))
+      return
 
     modalLock(new Promise((resolve) => {
       const { leaveClass, duration } = options.animation
@@ -127,17 +137,19 @@ export function createModalManager(overlayClass: string, options: ModalManagerOp
       const overlay = getOverlay()!
       history.pop()
 
-      if (!history.length) overlay.classList.add(leaveClass)
+      if (history.length === 0)
+        overlay.classList.add(leaveClass)
 
-      if (onBeforeLeave) onBeforeLeave()
+      if (onBeforeLeave)
+        onBeforeLeave()
 
       setTimeout(() => {
         modal.element.style.zIndex = ''
         modal.element.style.display = 'none'
 
-        if (!history.length) {
+        if (history.length === 0) {
           overlay.classList.remove(leaveClass)
-          root.removeChild(overlay)
+          overlay.remove()
           root.style.overflow = rootStyle.overflow
           root.style.removeProperty(properties.duration)
           layerIndex = options.zIndex
@@ -147,7 +159,8 @@ export function createModalManager(overlayClass: string, options: ModalManagerOp
           overlay.style.zIndex = `${+instances[id]!.element.style.zIndex - 1}`
         }
 
-        if (onAfterLeave) onAfterLeave()
+        if (onAfterLeave)
+          onAfterLeave()
 
         resolve()
       }, duration)
@@ -160,21 +173,32 @@ export function createModalManager(overlayClass: string, options: ModalManagerOp
 
     if (element) {
       key = `${overlayClass}-${++instanceIndex}`
+
       instances[key] = {
         element,
         style: { ...element.style },
         enter: () => modalEnter(key, modalOptions),
         leave: () => modalLeave(key, modalOptions),
       }
+
       element.style.display = 'none'
-      element.addEventListener('click', async (e) => {
-        if (e.target !== element) return
-        if (promise) return
-        if (onModalClick) onModalClick()
-        if (closeable) return instances[key]!.leave()
+
+      element.addEventListener('click', (e) => {
+        if (e.target !== element)
+          return
+
+        if (promise)
+          return
+
+        if (onModalClick)
+          onModalClick()
+
+        if (closeable)
+          return instances[key]!.leave()
 
         modalLock(new Promise((resolve) => {
           instances[key]!.element.classList.add('dialog-shake')
+
           setTimeout(() => {
             instances[key]!.element.classList.remove('dialog-shake')
             resolve()

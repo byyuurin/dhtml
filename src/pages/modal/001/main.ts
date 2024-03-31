@@ -1,5 +1,6 @@
 import 'uno.css'
 import './style.css'
+
 import { $ } from '../../../utils/dom'
 import { useModal } from './modal'
 

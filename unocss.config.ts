@@ -7,12 +7,11 @@ import {
 } from 'unocss'
 
 export default defineConfig({
-  shortcuts: [],
-  safelist: [],
   presets: [
     presetAttributify(),
     presetWind(),
     presetIcons({
+      cdn: 'https://esm.sh/',
       scale: 1.2,
       warn: true,
       extraProperties: {
@@ -20,5 +19,9 @@ export default defineConfig({
       },
     }),
   ],
-  transformers: [transformerDirectives()],
+  transformers: [
+    transformerDirectives(),
+  ],
+  shortcuts: [],
+  safelist: [],
 })

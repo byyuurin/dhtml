@@ -1,12 +1,12 @@
 @keyframes modal-enter {
   0% {
-    opacity: 0
+    opacity: 0;
   }
 }
 
 @keyframes modal-leave {
   100% {
-    opacity: 0
+    opacity: 0;
   }
 }
 

@@ -1,11 +1,13 @@
-import { defineConfig } from 'vite'
 import unocss from 'unocss/vite'
-import { resolveHtml } from './src/utils/vite'
+import { defineConfig } from 'vite'
+import { scanPages } from './src/utils/vite'
 
-const { root, outDir, entries } = resolveHtml('src/pages')
+const { root, outDir, entries } = scanPages('src/pages')
 
 export default defineConfig({
-  plugins: [unocss()],
+  plugins: [
+    unocss(),
+  ],
   root,
   build: {
     outDir,

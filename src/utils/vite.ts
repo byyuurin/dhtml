@@ -1,5 +1,5 @@
-import { resolve as pathResolve } from 'path'
-import fs from 'fs'
+import fs from 'node:fs'
+import { resolve as pathResolve } from 'node:path'
 
 interface resolveHtmlOptions {
   /**
@@ -9,11 +9,12 @@ interface resolveHtmlOptions {
   output?: string
 }
 
-export function resolveHtml(folder: string, options: resolveHtmlOptions = {}) {
+export function scanPages(folder: string, options: resolveHtmlOptions = {}) {
   const { output = 'dist' } = options
   const resolve = (path: string, dir = '.') => pathResolve(dir, path)
   const root = resolve(folder)
   const entries: Record<string, string> = {}
+
   const register = (path: string, parent: string) => {
     const fullPath = resolve(path, parent)
     const isDirectory = fs.statSync(fullPath).isDirectory()
